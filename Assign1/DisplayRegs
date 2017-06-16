@@ -1,0 +1,13 @@
+display/x $eax
+display/x $ebx
+display/x $ecx
+display/x $edx
+display/x $esi
+display/x $edi
+break _start
+define hook-stop
+disassemble
+end
+run
+nexti
+

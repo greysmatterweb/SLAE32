@@ -1,0 +1,119 @@
+Using a PacketStorm Bindshell.c programme as a reference:  https://packetstormsecurity.com/files/11058/bindshell.c.html
+
+
+I can see there is a number of syscalls with various arguments:
+
+
+excerpt from programme:
+
+
+    soc_des = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP); 
+    soc_rc = bind(soc_des, (struct sockaddr *) &serv_addr, sizeof(serv_addr));
+    soc_rc = listen(soc_des, 5);
+    soc_cli = accept(soc_des, (struct sockaddr *) &client_addr, &soc_len);
+
+These all relate to socketcall
+
+            dup2(soc_cli,0); 
+            dup2(soc_cli,1); 
+            dup2(soc_cli,2);
+
+this is for error handling
+
+
+and this is for executing the shell
+
+            execl("/bin/sh","sh",(char *)0);
+
+
+So the process to create a bind shell will be:
+
+Socket
+Bind
+Listen
+Accept
+Error_Handling
+Execute Shell 
+
+So we will be looking for the following syscalls: 
+
+cat /usr/include/x86_64-linux-gnu/asm/unistd_32.h |grep socket
+#define __NR_socketcall 102  (0x66 hex)
+
+cat /usr/include/x86_64-linux-gnu/asm/unistd_32.h |grep dup2
+#define __NR_dup2 63  (0x3f hex)
+
+cat /usr/include/x86_64-linux-gnu/asm/unistd_32.h |grep execve
+#define __NR_execve 11 (0x11 hex)
+
+
+
+
+
+A definition for the arguments
+
+
+resources:
+
+man 7 socket
+cat /usr/include/linux/socket.h
+cat /usr/include/linux/net.h
+cat /usr/include/x86_64-linux-gnu/bits/socket.h
+cat /usr/include/x86_64-linux-gnu/bits/socket_type.h
+
+***********************************************************
+
+#define SYS_SOCKET	1		/* sys_socket(2)		*/
+
+man 7 socket
+
+socket(int socket_family, int socket_type, int protocol)
+
+cat /usr/include/x86_64-linux-gnu/bits/socket.h
+#define PF_INET		2	/* IP protocol family.  */
+
+
+cat /usr/include/x86_64-linux-gnu/bits/socket_type.h
+SOCK_STREAM = 1,		/* Sequenced, reliable, connection-based
+				   byte streams.  */
+
+setting the protocol to 0 leaves it for the system to decide.
+
+1-2-0   
+
+***************************************************************
+
+#define SYS_BIND	2		/* sys_bind(2)			*/
+
+
+ int bind(int sockfd, const struct sockaddr *addr,
+                socklen_t addrlen);
+
+
+bind (no 2)   sockfd  is return address from EAX (socket) , port 1234, 16d=10c
+
+2-(-14)-4d2-10
+
+*******************************************************************************
+
+#define SYS_LISTEN	4		/* sys_listen(2)		*/
+
+  int listen(int sockfd, int backlog);
+
+
+4-(fd cf) - 0
+
+
+
+
+
+********************************************************************************
+
+#define SYS_ACCEPT	5		/* sys_accept(2)		*/
+
+
+
+
+
+
+  

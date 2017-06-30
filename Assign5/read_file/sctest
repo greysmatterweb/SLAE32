@@ -1,0 +1,55 @@
+root@kali-OSCP:~# sctest -vvv -Ss 100000 -G linux-x86-read_file.dot < linux-x86-read_file.msf
+graph file linux-x86-read_file.dot
+verbose = 3
+[emu 0x0x55ae9d959510 debug ] cpu state    eip=0x00417000
+[emu 0x0x55ae9d959510 debug ] eax=0x00000000  ecx=0x00000000  edx=0x00000000  ebx=0x00000000
+[emu 0x0x55ae9d959510 debug ] esp=0x00416fce  ebp=0x00000000  esi=0x00000000  edi=0x00000000
+[emu 0x0x55ae9d959510 debug ] Flags: 
+[emu 0x0x55ae9d959510 debug ] cpu state    eip=0x00417000
+[emu 0x0x55ae9d959510 debug ] eax=0x00000000  ecx=0x00000000  edx=0x00000000  ebx=0x00000000
+[emu 0x0x55ae9d959510 debug ] esp=0x00416fce  ebp=0x00000000  esi=0x00000000  edi=0x00000000
+[emu 0x0x55ae9d959510 debug ] Flags: 
+[emu 0x0x55ae9d959510 debug ] EB36                            jmp 0x38
+[emu 0x0x55ae9d959510 debug ] cpu state    eip=0x00417038
+[emu 0x0x55ae9d959510 debug ] eax=0x00000000  ecx=0x00000000  edx=0x00000000  ebx=0x00000000
+[emu 0x0x55ae9d959510 debug ] esp=0x00416fce  ebp=0x00000000  esi=0x00000000  edi=0x00000000
+[emu 0x0x55ae9d959510 debug ] Flags: 
+[emu 0x0x55ae9d959510 debug ] E8C5FFFFFF                      call 0xffffffca
+[emu 0x0x55ae9d959510 debug ] cpu state    eip=0x00417002
+[emu 0x0x55ae9d959510 debug ] eax=0x00000000  ecx=0x00000000  edx=0x00000000  ebx=0x00000000
+[emu 0x0x55ae9d959510 debug ] esp=0x00416fca  ebp=0x00000000  esi=0x00000000  edi=0x00000000
+[emu 0x0x55ae9d959510 debug ] Flags: 
+[emu 0x0x55ae9d959510 debug ] B805000000                      mov eax,0x5
+[emu 0x0x55ae9d959510 debug ] cpu state    eip=0x00417007
+[emu 0x0x55ae9d959510 debug ] eax=0x00000005  ecx=0x00000000  edx=0x00000000  ebx=0x00000000
+[emu 0x0x55ae9d959510 debug ] esp=0x00416fca  ebp=0x00000000  esi=0x00000000  edi=0x00000000
+[emu 0x0x55ae9d959510 debug ] Flags: 
+[emu 0x0x55ae9d959510 debug ] 5B                              pop ebx
+[emu 0x0x55ae9d959510 debug ] cpu state    eip=0x00417008
+[emu 0x0x55ae9d959510 debug ] eax=0x00000005  ecx=0x00000000  edx=0x00000000  ebx=0x0041703d
+[emu 0x0x55ae9d959510 debug ] esp=0x00416fce  ebp=0x00000000  esi=0x00000000  edi=0x00000000
+[emu 0x0x55ae9d959510 debug ] Flags: 
+[emu 0x0x55ae9d959510 debug ] 31C9                            xor ecx,ecx
+[emu 0x0x55ae9d959510 debug ] cpu state    eip=0x0041700a
+[emu 0x0x55ae9d959510 debug ] eax=0x00000005  ecx=0x00000000  edx=0x00000000  ebx=0x0041703d
+[emu 0x0x55ae9d959510 debug ] esp=0x00416fce  ebp=0x00000000  esi=0x00000000  edi=0x00000000
+[emu 0x0x55ae9d959510 debug ] Flags: PF ZF 
+[emu 0x0x55ae9d959510 debug ] CD80                            int 0x80
+stepcount 5
+copying vertexes
+optimizing graph
+vertex 0x55ae9d9e9bc0
+going forwards from 0x55ae9d9e9bc0
+ -> vertex 0x55ae9d9e5aa0
+ -> vertex 0x55ae9d9e9ee0
+ -> vertex 0x55ae9d9ea1c0
+ -> vertex 0x55ae9d9ea330
+copying edges for 0x55ae9d9ea330
+vertex 0x55ae9d9ea750
+going forwards from 0x55ae9d9ea750
+copying edges for 0x55ae9d9ea750
+[emu 0x0x55ae9d959510 debug ] cpu state    eip=0x0041700c
+[emu 0x0x55ae9d959510 debug ] eax=0x00000005  ecx=0x00000000  edx=0x00000000  ebx=0x0041703d
+[emu 0x0x55ae9d959510 debug ] esp=0x00416fce  ebp=0x00000000  esi=0x00000000  edi=0x00000000
+[emu 0x0x55ae9d959510 debug ] Flags: PF ZF 
+

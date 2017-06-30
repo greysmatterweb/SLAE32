@@ -1,0 +1,16 @@
+
+
+read_file
+
+
+msfvenom -p linux/x86/read_file path=/etc/passwd -f raw -o linux-x86-read_file.msf
+
+sctest -vvv -Ss 100000 -G linux-x86-read_file.dot < linux-x86-read_file.msf
+
+ndisasm -u ./linux-x86-read_file.msf
+
+dot linux-x86-read_file.dot -T png > linux-x86-read_file.png
+
+
+
+

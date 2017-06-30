@@ -1,0 +1,13 @@
+digraph G {
+	//rankdir=LR
+	node [fontname=Courier, labeljust=r];
+	 "0x5606d9b0c570" [shape=box, label = "0x00417000 31DB                            xor ebx,ebx\l0x00417002 F7E3                            mul ebx\l0x00417004 53                              push ebx\l0x00417005 43                              inc ebx\l0x00417006 53                              push ebx\l0x00417007 6A02                            push byte 0x2\l0x00417009 B066                            mov al,0x66\l0x0041700b 89E1                            mov ecx,esp\l"]
+	 "0x5606d9b0c250" [shape=box, style=filled, color=".7 .3 1.0", label = "0x0041700d socket\l"]
+	 "0x5606d9b0bc60" [shape=box, label = "0x0041700f 85C0                            test eax,eax\l0x00417011 7844                            js 0x46\l0x00417013 97                              xchg eax,edi\l0x00417014 5B                              pop ebx\l0x00417015 68C0A80165                      push dword 0x6501a8c0\l0x0041701a 680200115C                      push dword 0x5c110002\l0x0041701f 89E1                            mov ecx,esp\l0x00417021 6A66                            push byte 0x66\l0x00417023 58                              pop eax\l0x00417024 50                              push eax\l0x00417025 51                              push ecx\l0x00417026 57                              push edi\l0x00417027 89E1                            mov ecx,esp\l0x00417029 43                              inc ebx\l"]
+	 "0x5606d9b121f0" [shape=box, style=filled, color=".7 .3 1.0", label = "0x0041702a connect\l"]
+	 "0x5606d9b12380" [shape=box, label = "0x0041702c 85C0                            test eax,eax\l0x0041702e 7827                            js 0x29\l0x00417030 B207                            mov dl,0x7\l0x00417032 B900100000                      mov ecx,0x1000\l0x00417037 89E3                            mov ebx,esp\l0x00417039 C1EB0C                          shr ebx,0xc\l0x0041703c C1E30C                          shl ebx,0xc\l0x0041703f B07D                            mov al,0x7d\l"]
+	 "0x5606d9b0c570" -> "0x5606d9b0c250" [style = bold ]
+	 "0x5606d9b0c250" -> "0x5606d9b0bc60" [style = bold ]
+	 "0x5606d9b0bc60" -> "0x5606d9b121f0" [style = bold ]
+	 "0x5606d9b121f0" -> "0x5606d9b12380" [style = bold ]
+}

